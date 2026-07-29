@@ -6,11 +6,11 @@ let spans = document.querySelectorAll("#answer>div>.orgspan")
 let next = document.getElementById("next")
 let back = document.getElementById("back")
 let clickbox = document.getElementById("clickbox")
-const questionBox= document.getElementById('questionBox')
+const questionBox = document.getElementById('questionBox')
 
 let flag = 0
-let score = 0 
-let ans0,ans1,ans2,ans3,ans4,ans5
+let score = 0
+let ans0, ans1, ans2, ans3, ans4, ans5
 
 
 // selects ---- 
@@ -25,10 +25,10 @@ let ans0,ans1,ans2,ans3,ans4,ans5
 const themeBtn = document.getElementById("themeBtn");
 
 themeBtn.addEventListener("click", () => {
-    
+
     document.documentElement.classList.toggle("dark");
 
-    
+
 });
 
 // ===========دکمه دارم و لایت  ====================== 
@@ -78,7 +78,9 @@ back.setAttribute("disabled", "disabled")
 back.style.background = "gray"
 
 next.setAttribute("disabled", "disabled")
+
 next.style.background = "gray"
+
 
 // reset -------------------------------
 
@@ -92,23 +94,26 @@ answerbox.forEach((val) => {
     val.addEventListener("click", (e) => {
 
         next.removeAttribute("disabled")
-        next.style.background = "#161b26"
 
-         if (flag == 0) {
+        next.style.background = "#161b26"
+        back.setAttribute("disabled", "disabled")
+        back.style.background = "gray"
+
+
+        answerbox.forEach((item) => {
+
+            item.classList.add("pointer-events-none")
+
+        })
+
+
+        if (flag == 0) {
             back.style.background = "gray"
             back.setAttribute("disabled", "disabled")
         }
 
 
         // -------------------------------
-
-      
-
-
-
-
-
-
 
         // ----------------------------
 
@@ -123,10 +128,18 @@ answerbox.forEach((val) => {
 
 // دکمه جلو -----------------------------
 next.addEventListener("click", () => {
-clearAnswerStyles()
+    clearAnswerStyles()
+
+
+    answerbox.forEach((item) => {
+
+        item.classList.remove("pointer-events-none")
+
+    })
+
     if (flag < 5) {
         flag++
-        
+
     }
     back.removeAttribute("disabled")
     back.style.background = "#161b26"
@@ -135,26 +148,26 @@ clearAnswerStyles()
     next.setAttribute("disabled", "disabled")
     next.style.background = "gray"
     let finish = false
-    if(next.innerHTML == 'Finish'){
-         finish = true
+    if (next.innerHTML == 'Finish') {
+        finish = true
     }
 
     questions()
-    
-    
-        
+
+
+
     // ----------------------
     if (finish) {
-        questionBox.setAttribute('inert','inert')
+        questionBox.setAttribute('inert', 'inert')
         setTimeout(() => {
             alert("niloufar popup")
-        answerbox.forEach((val) => {
-            val.classList.add("pointer-events-none")
-        })
+            answerbox.forEach((val) => {
+                val.classList.add("pointer-events-none")
+            })
         }, 1000);
 
         //   🔴 niloufar popup -----------------
-        
+
 
     }
 
@@ -162,7 +175,7 @@ clearAnswerStyles()
 
 
 
-    
+
 
 })
 
@@ -177,10 +190,16 @@ clearAnswerStyles()
 // دکمه قبلی ----------------------------
 back.addEventListener("click", () => {
     savingPreviousAnswers()
+    next.classList.remove("pointer-events-none")
+    answerbox.forEach((item) => {
 
+        item.classList.add("pointer-events-none")
+
+    })
 
     back.removeAttribute("disabled")
     back.style.background = "#161b26"
+    next.style.background = "#161b26"
     next.style.fontSize = "14px"
     next.innerHTML = "< Next "
     flag--
@@ -207,185 +226,189 @@ back.addEventListener("click", () => {
 
 
 ///تابع سوالات به غیر از سوال اول
-function questions(){{
-    clearAnswerStyles()
-    if (flag == 1) {
-        question.innerHTML = "خروجی typeof 10 چیست؟"
+function questions() {
+    {
+        clearAnswerStyles()
+        if (flag == 1) {
+            question.innerHTML = "خروجی typeof 10 چیست؟"
 
-        spans[0].innerHTML = "int"
-        spans[1].innerHTML = "number"
-        spans[2].innerHTML = "float"
-        spans[3].innerHTML = "integer"
-
-
-    } else if (flag == 2) {
-
-        question.innerHTML = "کدام عملگر برای مقایسه مقدار و نوع استفاده می‌شود؟"
-
-        spans[0].innerHTML = "="
-        spans[1].innerHTML = "=="
-        spans[2].innerHTML = "==="
-        spans[3].innerHTML = "!="
-
-    } else if (flag == 3) {
-
-        question.innerHTML = 'نتیجه 2 + "3" چیست؟'
-
-        spans[0].innerHTML = "5"
-        spans[1].innerHTML = "23"
-        spans[2].innerHTML = "6"
-        spans[3].innerHTML = "Error"
-
-    } else if (flag == 4) {
-        question.innerHTML = 'کدام دستور اجرای تابع را متوقف و مقداری برمی‌گرداند؟'
-
-        spans[0].innerHTML = "stop"
-        spans[1].innerHTML = "break"
-        spans[2].innerHTML = "return"
-        spans[3].innerHTML = "exit"
-    } else if (flag == 5) {
-
-        question.innerHTML = 'مقدار اولیه متغیر تعریف‌ شده بدون مقدار چیست؟'
-
-        spans[0].innerHTML = "null"
-        spans[1].innerHTML = "false"
-        spans[2].innerHTML = "undefined"
-        spans[3].innerHTML = "0"
-
-        next.innerHTML = "Finish"
+            spans[0].innerHTML = "int"
+            spans[1].innerHTML = "number"
+            spans[2].innerHTML = "float"
+            spans[3].innerHTML = "integer"
 
 
+        } else if (flag == 2) {
+
+            question.innerHTML = "کدام عملگر برای مقایسه مقدار و نوع استفاده می‌شود؟"
+
+            spans[0].innerHTML = "="
+            spans[1].innerHTML = "=="
+            spans[2].innerHTML = "==="
+            spans[3].innerHTML = "!="
+
+        } else if (flag == 3) {
+
+            question.innerHTML = 'نتیجه 2 + "3" چیست؟'
+
+            spans[0].innerHTML = "5"
+            spans[1].innerHTML = "23"
+            spans[2].innerHTML = "6"
+            spans[3].innerHTML = "Error"
+
+        } else if (flag == 4) {
+            question.innerHTML = 'کدام دستور اجرای تابع را متوقف و مقداری برمی‌گرداند؟'
+
+            spans[0].innerHTML = "stop"
+            spans[1].innerHTML = "break"
+            spans[2].innerHTML = "return"
+            spans[3].innerHTML = "exit"
+
+        } else if (flag == 5) {
+
+            question.innerHTML = 'مقدار اولیه متغیر تعریف‌ شده بدون مقدار چیست؟'
+
+            spans[0].innerHTML = "null"
+            spans[1].innerHTML = "false"
+            spans[2].innerHTML = "undefined"
+            spans[3].innerHTML = "0"
+
+            next.innerHTML = "Finish"   
+            next.setAttribute("disabled", "disabled")
+
+
+        }
+        savingPreviousAnswers()
     }
-    savingPreviousAnswers()
-}}
+}
 // end pooria ================
 ///تابع سوالات به غیر از سوال اول
 
 //shaliz
-  // shaliz 🔴 question box
+// shaliz 🔴 question box
 checkAnswer()
-function checkAnswer(){
-    answerbox.forEach((val,i,arr)=>{
-        val.addEventListener('click',()=>{
+function checkAnswer() {
+    answerbox.forEach((val, i, arr) => {
+        val.addEventListener('click', () => {
             console.log(i)
-            if(flag == 0){
+            if (flag == 0) {
                 ans0 = i
-             if(i == 0){
-                correctAnswer(val)
-             }else{
-                val.classList.add('wrong')
-                arr[0].classList.add('correct')
-             }
-            
-            }else if(flag == 1){
-                ans1 = i
-                 if(i == 1){
-                correctAnswer(val)
-             }else{
-                val.classList.add('wrong')
-                arr[1].classList.add('correct')
-             }
+                if (i == 0) {
+                    correctAnswer(val)
+                } else {
+                    val.classList.add('wrong')
+                    arr[0].classList.add('correct')
+                }
 
-            }else if(flag == 2){
+            } else if (flag == 1) {
+                ans1 = i
+                if (i == 1) {
+                    correctAnswer(val)
+                } else {
+                    val.classList.add('wrong')
+                    arr[1].classList.add('correct')
+                }
+
+            } else if (flag == 2) {
                 ans2 = i
-                 if(i == 2){
-                correctAnswer(val)
-             }else{
-                val.classList.add('wrong')
-                arr[2].classList.add('correct')
-             }
-            }else if(flag == 3){
+                if (i == 2) {
+                    correctAnswer(val)
+                } else {
+                    val.classList.add('wrong')
+                    arr[2].classList.add('correct')
+                }
+            } else if (flag == 3) {
                 ans3 = i
-                 if(i == 1){
-                correctAnswer(val)
-             }else{
-                val.classList.add('wrong')
-                arr[1].classList.add('correct')
-             }
-            }else if(flag == 4){
+                if (i == 1) {
+                    correctAnswer(val)
+                } else {
+                    val.classList.add('wrong')
+                    arr[1].classList.add('correct')
+                }
+            } else if (flag == 4) {
                 ans4 = i
-                 if(i == 2){
-                correctAnswer(val)
-             }else{
-                val.classList.add('wrong')
-                arr[2].classList.add('correct')
-             }
-            }else {
+                if (i == 2) {
+                    correctAnswer(val)
+                } else {
+                    val.classList.add('wrong')
+                    arr[2].classList.add('correct')
+                }
+            } else {
                 ans5 = i
-                 if(i == 0){
-                correctAnswer(val)
-             }else{
-                val.classList.add('wrong')
-                arr[0].classList.add('correct')
-             }
+                if (i == 0) {
+                    correctAnswer(val)
+                } else {
+                    val.classList.add('wrong')
+                    arr[0].classList.add('correct')
+                }
             }
         })
     })
 }
 
 
-function correctAnswer(item){
+function correctAnswer(item) {
     item.classList.add('correct')
-                score ++
+    score++
 }
 
-function clearAnswerStyles(){
-    answerbox.forEach((val)=> val.classList.remove('correct','wrong'))
+function clearAnswerStyles() {
+    answerbox.forEach((val) => val.classList.remove('correct', 'wrong'))
 }
 
-function savingPreviousAnswers(){
+function savingPreviousAnswers() {
     clearAnswerStyles()
-    if(flag >1) back.removeAttribute('disabled')
+    if (flag > 1) back.removeAttribute('disabled')
 
-    if(flag == 0 && ans0 !=null){
-    next.removeAttribute('disabled')
-        if(ans0 == 0){
+    if (flag == 0 && ans0 != null) {
+        next.removeAttribute('disabled')
+        if (ans0 == 0) {
             answerbox[0].classList.add('correct')
-        }else{
+        } else {
             answerbox[ans0].classList.add('wrong')
             answerbox[0].classList.add('correct')
         }
-    }else if(flag == 1 && ans1 !=null){
-    next.removeAttribute('disabled')
-        if(ans1 == 1){
+    } else if (flag == 1 && ans1 != null) {
+        next.removeAttribute('disabled')
+        if (ans1 == 1) {
             answerbox[1].classList.add('correct')
-        }else{
+        } else {
             answerbox[ans1].classList.add('wrong')
             answerbox[1].classList.add('correct')
         }
-    }else if(flag == 2 && ans2 !=null){
-    next.removeAttribute('disabled')
+    } else if (flag == 2 && ans2 != null) {
+        next.removeAttribute('disabled')
 
-        if(ans2 == 2){
+        if (ans2 == 2) {
             answerbox[2].classList.add('correct')
-        }else{
+        } else {
             answerbox[ans2].classList.add('wrong')
             answerbox[2].classList.add('correct')
         }
-    }else if(flag == 3 && ans3 !=null){
-    next.removeAttribute('disabled')
+    } else if (flag == 3 && ans3 != null) {
+        next.removeAttribute('disabled')
 
-         if(ans3 == 1){
+        if (ans3 == 1) {
             answerbox[1].classList.add('correct')
-        }else{
+        } else {
             answerbox[ans3].classList.add('wrong')
             answerbox[1].classList.add('correct')
         }
-    }else if(flag == 4 && ans4 !=null){
-    next.removeAttribute('disabled')
+    } else if (flag == 4 && ans4 != null) {
+        next.removeAttribute('disabled')
 
-         if(ans4 == 2){
+        if (ans4 == 2) {
             answerbox[2].classList.add('correct')
-        }else{
+        } else {
             answerbox[ans4].classList.add('wrong')
             answerbox[2].classList.add('correct')
         }
-    }else if(flag == 5 && ans5 !=null){
-    next.removeAttribute('disabled')
+    } else if (flag == 5 && ans5 != null) {
+        next.removeAttribute('disabled')
 
-         if(ans5 == 0){
+        if (ans5 == 0) {
             answerbox[0].classList.add('correct')
-        }else{
+        } else {
             answerbox[ans5].classList.add('wrong')
             answerbox[0].classList.add('correct')
         }
