@@ -152,6 +152,7 @@ next.addEventListener("click", () => {
     if (flag < 5) {
         flag++
     }
+    
     back.removeAttribute("disabled")
     back.style.background = "#161b26"
     console.log(flag);
