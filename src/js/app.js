@@ -21,7 +21,10 @@ let flag = 0
 const themeBtn = document.getElementById("themeBtn");
 
 themeBtn.addEventListener("click", () => {
+    
     document.documentElement.classList.toggle("dark");
+
+    
 });
 
 // ===========دکمه دارم و لایت  ====================== 
