@@ -96,19 +96,19 @@
             </div>
 
             <!-- متن سوال -->
-            <h2 class="text-lg md:text-xl font-bold text-slate-800 dark:text-slate-100 mb-8 leading-relaxed">
+            <h2 id="question" class="text-lg md:text-xl font-bold text-slate-800 dark:text-slate-100 mb-8 leading-relaxed">
                 کدام‌یک از گزینه‌های زیر یک تابع پیکانی (Arrow Function) صحیح در جاوااسکریپت است؟
             </h2>
 
             <!-- گزینه‌ها -->
-            <div class="w-full flex flex-col gap-3.5">
+            <div id="answer" class="w-full flex flex-col gap-3.5">
 
                 <!-- گزینه A -->
                 <div dir="rtl"
                     class="option flex flex-row-reverse items-center justify-start gap-4 p-4 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 hover:border-amber-500 dark:hover:border-amber-400 hover:bg-amber-50/70 dark:hover:bg-amber-950/30 cursor-pointer transition-all duration-300 group shadow-sm hover:shadow-md hover:shadow-amber-500/10">
                     <span
                         class="w-9 h-9 rounded-xl bg-amber-50 dark:bg-slate-800 text-amber-600 dark:text-amber-400 flex items-center justify-center text-sm font-extrabold group-hover:bg-amber-500 group-hover:text-slate-950 transition-all shadow-inner shrink-0">A</span>
-                    <span dir="ltr" class="text-sm font-semibold text-slate-800 dark:text-slate-200 text-left">const add
+                    <span dir="ltr" class="orgspan text-sm font-semibold text-slate-800 dark:text-slate-200 text-left">const add
                         = (a, b) => a + b;</span>
                 </div>
 
@@ -117,15 +117,15 @@
                     class="option flex flex-row-reverse items-center justify-start gap-4 p-4 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 hover:border-amber-500 dark:hover:border-amber-400 hover:bg-amber-50/70 dark:hover:bg-amber-950/30 cursor-pointer transition-all duration-300 group shadow-sm hover:shadow-md hover:shadow-amber-500/10">
                     <span
                         class="w-9 h-9 rounded-xl bg-amber-50 dark:bg-slate-800 text-amber-600 dark:text-amber-400 flex items-center justify-center text-sm font-extrabold group-hover:bg-amber-500 group-hover:text-slate-950 transition-all shadow-inner shrink-0">B</span>
-                    <span dir="ltr" class="text-sm font-semibold text-slate-800 dark:text-slate-200 text-left">function
+                    <span dir="ltr" class="orgspan text-sm font-semibold text-slate-800 dark:text-slate-200 text-left">function
                         => add(a, b) { return a + b; }</span>
                 </div>
 
                 <!-- گزینه C --><div dir="rtl"
-                    class="option flex flex-row-reverse items-center justify-start gap-4 p-4 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 hover:border-amber-500 dark:hover:border-amber-400 hover:bg-amber-50/70 dark:hover:bg-amber-950/30 cursor-pointer transition-all duration-300 group shadow-sm hover:shadow-md hover:shadow-amber-500/10">
+                    class="option flex  flex-row-reverse items-center justify-start gap-4 p-4 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 hover:border-amber-500 dark:hover:border-amber-400 hover:bg-amber-50/70 dark:hover:bg-amber-950/30 cursor-pointer transition-all duration-300 group shadow-sm hover:shadow-md hover:shadow-amber-500/10">
                     <span
                         class="w-9 h-9 rounded-xl bg-amber-50 dark:bg-slate-800 text-amber-600 dark:text-amber-400 flex items-center justify-center text-sm font-extrabold group-hover:bg-amber-500 group-hover:text-slate-950 transition-all shadow-inner shrink-0">C</span>
-                    <span dir="ltr" class="text-sm font-semibold text-slate-800 dark:text-slate-200 text-left">const add
+                    <span dir="ltr" class="orgspan text-sm font-semibold text-slate-800 dark:text-slate-200 text-left">const add
                         = function(a, b) => { return a + b; }</span>
                 </div>
 
@@ -134,17 +134,17 @@
                     class="option flex flex-row-reverse items-center justify-start gap-4 p-4 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 hover:border-amber-500 dark:hover:border-amber-400 hover:bg-amber-50/70 dark:hover:bg-amber-950/30 cursor-pointer transition-all duration-300 group shadow-sm hover:shadow-md hover:shadow-amber-500/10">
                     <span
                         class="w-9 h-9 rounded-xl bg-amber-50 dark:bg-slate-800 text-amber-600 dark:text-amber-400 flex items-center justify-center text-sm font-extrabold group-hover:bg-amber-500 group-hover:text-slate-950 transition-all shadow-inner shrink-0">D</span>
-                    <span dir="ltr" class="text-sm font-semibold text-slate-800 dark:text-slate-200 text-left">arrow
+                    <span dir="ltr" class="orgspan text-sm font-semibold text-slate-800 dark:text-slate-200 text-left">arrow
                         add(a, b) { return a + b; }</span>
                 </div>
             </div>
         </div>
 
         <!-- دکمه‌های ناوبری پایین -->
-        <div class="flex items-center justify-between">
+        <div id="clickbox" class="flex items-center justify-between">
             <!-- دکمه Next در سمت راست -->
-            <button
-                class="bg-white/90 dark:bg-[#161b26]/90 backdrop-blur-md border border-amber-200/70 dark:border-amber-500/25 px-6 py-3.5 rounded-2xl text-sm font-semibold flex items-center gap-2 hover:bg-amber-50/90 dark:hover:bg-amber-950/40 hover:border-amber-400 dark:hover:border-amber-400 hover:text-amber-600 dark:hover:text-amber-300 transition-all duration-300 shadow-md shadow-amber-500/5 text-slate-800 dark:text-slate-100 group cursor-pointer">
+            <button id="next"
+                class="bg-white/90 dark:bg-[#161b26]/90  backdrop-blur-md border border-amber-200/70 dark:border-amber-500/25 px-6 py-3.5 rounded-2xl text-sm font-semibold flex items-center gap-2 hover:bg-amber-50/90 dark:hover:bg-amber-950/40 hover:border-amber-400 dark:hover:border-amber-400 hover:text-amber-600 dark:hover:text-amber-300 transition-all duration-300 shadow-md shadow-amber-500/5 text-sky-100 dark:text-slate-100 group cursor-pointer">
                 <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform duration-300" fill="none"
                     stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -153,8 +153,8 @@
             </button>
 
             <!-- دکمه Previous در سمت چپ -->
-            <button
-                class="bg-white/90 dark:bg-[#161b26]/90 backdrop-blur-md border border-amber-200/70 dark:border-amber-500/25 px-8 py-3.5 rounded-2xl text-sm font-semibold flex items-center gap-2 hover:bg-amber-50/90 dark:hover:bg-amber-950/40 hover:border-amber-400 dark:hover:border-amber-400 hover:text-amber-600 dark:hover:text-amber-300 transition-all duration-300 shadow-md shadow-amber-500/5 text-slate-800 dark:text-slate-100 group cursor-pointer">
+            <button id="back"
+                class="bg-white/90 dark:bg-[#161b26]/90 backdrop-blur-md border border-amber-200/70 dark:border-amber-500/25 px-8 py-3.5 rounded-2xl text-sm font-semibold flex items-center gap-2 hover:bg-amber-50/90 dark:hover:bg-amber-950/40 hover:border-amber-400 dark:hover:border-amber-400 hover:text-amber-600 dark:hover:text-amber-300 transition-all duration-300 shadow-md shadow-amber-500/5 text-slate-100 dark:text-slate-100 group cursor-pointer">
                 Previous
                 <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none"
                     stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
