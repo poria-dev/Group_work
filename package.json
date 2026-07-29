@@ -1,7 +1,7 @@
 {
-  "name": "group-work",
+  "name": "group_work",
   "version": "1.0.0",
-  "description": "",
+  "description": "https://poria-dev.github.io/Group_work/src",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,13 +13,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/poria-dev/Group_work/issues"
   },
-  "homepage": "https://github.com/poria-dev/Group_work#readme",
-  "dependencies": {
-    "@tailwindcss/cli": "^4.3.3",
-    "tailwindcss": "^4.3.3"
-  }
+  "homepage": "https://github.com/poria-dev/Group_work#readme"
 }
