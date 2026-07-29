@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="rtl" class="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="output.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
 
@@ -49,7 +50,7 @@
 
             <!-- دکمه ریست -->
             <button
-                class="flex items-center gap-1.5 border border-amber-200/80 dark:border-amber-500/30 px-3.5 py-2 rounded-2xl text-xs font-medium hover:bg-amber-50 dark:hover:bg-amber-950/40 hover:text-amber-600 dark:hover:text-amber-300 transition-all text-slate-800 dark:text-slate-200 cursor-pointer shadow-sm">
+                class="reset flex items-center gap-1.5 border border-amber-200/80 dark:border-amber-500/30 px-3.5 py-2 rounded-2xl text-xs font-medium hover:bg-amber-50 dark:hover:bg-amber-950/40 hover:text-amber-600 dark:hover:text-amber-300 transition-all text-slate-800 dark:text-slate-200 cursor-pointer shadow-sm">
                 <svg class="w-3.5 h-3.5 text-amber-500" fill="none" stroke="currentColor" stroke-width="2"
                     viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -59,19 +60,24 @@
                 Reset
             </button>
 
-            <span class="hidden sm:inline text-xs text-slate-400 font-medium">Question 1 of 5</span>
+            <span class="hidden sm:inline text-xs text-slate-400 font-medium">Question <span id="num">1</span> of 6</span>
 
             <!-- نوار پیشرفت وسط -->
-            <div class="flex-1 flex items-center gap-3">
-                <span class="text-xs font-bold text-amber-600 dark:text-amber-400">1 / 5</span>
-                <div class="flex-1 bg-slate-200 dark:bg-slate-700 h-2.5 rounded-full overflow-hidden p-0.5 border border-amber-200/40 dark:border-amber-500/20"><div class="bg-gradient-to-r from-amber-400 to-yellow-500 h-full rounded-full transition-all duration-500 shadow-sm w-0"></div>
-                </div>
-            </div>
+            <div dir="ltr" class="flex gap-2 ">
+            <span class="w-8 h-2 rounded-full bg-amber-400 progress"></span>
+            <span class="w-8 h-2 rounded-full bg-slate-300 progress"></span>
+            <span class="w-8 h-2 rounded-full bg-slate-300 progress"></span>
+            <span class="w-8 h-2 rounded-full bg-slate-300 progress"></span>
+            <span class="w-8 h-2 rounded-full bg-slate-300 progress"></span>
+            <span class="w-8 h-2 rounded-full bg-slate-300 progress"></span>
+            
+            
+        </div>
 
             <!-- تایمر -->
             <div
-                class="flex items-center gap-2 bg-amber-50/50 dark:bg-amber-950/30 border border-amber-200/60 dark:border-amber-500/20 px-3 py-2 rounded-2xl text-sm font-semibold shadow-inner text-amber-800 dark:text-amber-300">
-                <span id="timer">00:30</span>
+                class="flex items-center gap-2 bg-amber-50/50 dark:bg-amber-950/30 border border-amber-200/60 dark:border-amber-500/20 px-3 py-2 rounded-2xl text-sm font-semibold shadow-inner text-amber-800 dark:text-amber-300 box ">
+                <span>00:<span id="timer">30</span></span>
                 <svg class="w-4 h-4 text-amber-500 animate-pulse" fill="none" stroke="currentColor" stroke-width="2"
                     viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -166,6 +172,141 @@
     </div>
 
     <!-- ================== end zahra ================= -->
+<div id="resultModal"
+    class="fixed inset-0 scale-0 duration-300 flex items-center justify-center bg-black/60 backdrop-blur-sm z-50">
+
+    <div
+        class="w-[90%] max-w-md rounded-3xl
+        bg-white dark:bg-slate-900
+        border border-slate-200 dark:border-slate-700
+        shadow-2xl
+        p-8 text-center">
+
+        <!-- Badge -->
+        <div id="levelEmoji" class="text-7xl mb-3">
+            👑
+        </div>
+
+        <!-- Title -->
+        <h2 id="levelTitle"
+            class="text-3xl font-bold text-slate-800 dark:text-white">
+            JavaScript Master
+        </h2>
+
+        <!-- Description -->
+        <p id="levelDesc"
+            class="mt-3 text-slate-500 dark:text-slate-300 leading-7">
+
+            فوق‌العاده! به مفاهیم این بخش کاملاً مسلط هستی.
+
+        </p>
+
+        <!-- Score -->
+        <div
+            class="mt-7 rounded-2xl
+            bg-slate-100 dark:bg-slate-800
+            p-5">
+
+            <p class="text-slate-500 dark:text-slate-400">
+                Your Score
+            </p>
+
+            <h3 id="finalScore"
+                class="mt-2 text-5xl font-black text-amber-500">
+                  6 / <span class="correctt">0</span>
+            </h3>
+
+        </div>
+
+        <button id="restartBtn"
+            class="mt-8 w-full py-3 rounded-xl
+            bg-gradient-to-r from-amber-400 to-yellow-500
+            text-white font-bold
+            hover:scale-105 active:scale-95
+            transition">
+
+            دوباره تلاش کن
+
+        </button>
+
+    </div>
+
+</div>
+<!-- //////////////////////////////////////// -->
+ <div id="timeModal"
+    class="fixed inset-0 scale-0 flex items-center justify-center bg-black/60 backdrop-blur-sm z-50 duration-500">
+
+    <div
+        class="w-[90%] max-w-md rounded-3xl
+        bg-white dark:bg-slate-900
+        border border-slate-200 dark:border-slate-700
+        shadow-2xl p-8 text-center">
+
+        <!-- Icon -->
+        <div class="w-20 h-20 mx-auto rounded-full
+            bg-red-100 dark:bg-red-500/15
+            flex items-center justify-center">
+
+            <span class="text-5xl animate-pulse">⏰</span>
+
+        </div>
+
+        <!-- Title -->
+        <h2 class="mt-5 text-3xl font-bold
+            text-slate-800 dark:text-white">
+
+            Time's Up!
+
+        </h2>
+
+        <!-- Description -->
+        <p class="mt-4 text-slate-600 dark:text-slate-300 leading-7">
+
+            زمان پاسخ‌گویی به پایان رسید.
+            <br>
+            می‌توانید دوباره آزمون را شروع کنید.
+
+        </p>
+
+        <!-- Progress -->
+        <div
+            class="mt-6 rounded-2xl
+            bg-slate-100 dark:bg-slate-800
+            p-5">
+
+            <p class="text-slate-500 dark:text-slate-400">
+                Questions Answered
+            </p>
+
+            <h3 id="answeredQuestions"
+                class="mt-2 text-4xl font-black
+                text-amber-500">
+
+                6 / <span class="score">0</span>
+
+            </h3>
+
+        </div>
+
+        <!-- Buttons -->
+        <div class="flex gap-3 mt-8">
+
+            <button id="retryBtn"
+                class="flex-1 py-3 rounded-xl
+                bg-gradient-to-r
+                from-amber-400 to-yellow-500
+                text-white font-bold
+                hover:scale-105 transition">
+
+                دوباره تلاش کن
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
     <!-- ==================== فوتر مدرن چهار نفره ==================== -->
     <footer class="w-full max-w-5xl mt-20 mb-8 mx-auto px-4">
@@ -232,13 +373,13 @@
                     <h4 class="text-sm font-extrabold text-slate-800 dark:text-slate-100">Niloufar Mohammadi</h4>
                     <span class="text-[11px] font-semibold text-amber-600 dark:text-amber-400 mt-0.5 mb-4">Front-End Dev</span>
                     <div class="flex items-center gap-2.5">
-                        <a href="#" target="_blank" class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-amber-500 hover:text-white dark:hover:bg-amber-500 dark:hover:text-slate-950 hover:border-amber-500 transition-all shadow-sm" title="GitHub">
+                        <a href="https://github.com/niloufar-dev" target="_blank" class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-amber-500 hover:text-white dark:hover:bg-amber-500 dark:hover:text-slate-950 hover:border-amber-500 transition-all shadow-sm" title="GitHub">
                             <i class="fa-brands fa-github text-sm"></i>
                         </a>
-                        <a href="#" target="_blank" class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-amber-500 hover:text-white dark:hover:bg-amber-500 dark:hover:text-slate-950 hover:border-amber-500 transition-all shadow-sm" title="LinkedIn">
+                        <a href="https://www.linkedin.com/in/niloufar-mohammadi-a0b2503ab/" target="_blank" class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-amber-500 hover:text-white dark:hover:bg-amber-500 dark:hover:text-slate-950 hover:border-amber-500 transition-all shadow-sm" title="LinkedIn">
                             <i class="fa-brands fa-linkedin-in text-sm"></i>
                         </a>
-                        <a href="#" target="_blank" class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-amber-500 hover:text-white dark:hover:bg-amber-500 dark:hover:text-slate-950 hover:border-amber-500 transition-all shadow-sm" title="Instagram">
+                        <a href="https://www.instagram.com/niloufar_dev" target="_blank" class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-amber-500 hover:text-white dark:hover:bg-amber-500 dark:hover:text-slate-950 hover:border-amber-500 transition-all shadow-sm" title="Instagram">
                             <i class="fa-brands fa-instagram text-sm"></i>
                         </a>
                     </div>
@@ -276,7 +417,6 @@
 </body>
 <script src="js/app.js"></script>
 
-</html>
 
 
 <!-- git pull origin main --allow-unrelated-histories -->
