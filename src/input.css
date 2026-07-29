@@ -1,3 +1,14 @@
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+
+@layer components{
+       .correct{
+              @apply bg-green-600
+       }
+
+       .wrong{
+              @apply bg-red-400
+       }
+}
