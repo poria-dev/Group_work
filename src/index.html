@@ -1,33 +1,277 @@
-<!-- npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="output.css">
 </head>
 
-<body>
+
+<body class="bg-gradient-to-br from-[#fffdf7] via-[#f5f5f4] to-[#e7e5e4] dark:from-[#ffffff] dark:via-[#d1d5db] dark:to-[#1f2937] text-slate-800 dark:text-white min-h-screen flex flex-col items-center  justify-center p-4 transition-all duration-500 relative">
 
 
-
-
+    
     <!-- ================== start zahra ================= -->
 
+    <!-- دکمه تغییر تم مدرن، ریسپانسیو و بدون تداخل با باکس‌ها -->
+    <div class="absolute top-4 right-4 sm:top-6 sm:right-8 z-50">
+        <button id="themeBtn" class="group relative inline-flex items-center justify-center p-2.5 lg:px-4 lg:py-2.5 rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-amber-200/60 dark:border-amber-500/30 shadow-lg hover:shadow-amber-500/20 hover:border-amber-400 dark:hover:border-amber-400 transition-all duration-300 cursor-pointer text-slate-700 dark:text-amber-300">
 
+            <!-- آیکون خورشید -->
+            <svg class="w-5 h-5 text-amber-500 group-hover:rotate-45 transition-transform duration-300 dark:hidden"
+                fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+                </path>
+            </svg>
 
+            <!-- آیکون ماه -->
+            <svg class="w-5 h-5 text-amber-400 group-hover:-rotate-12 transition-transform duration-300 hidden dark:block"
+                fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z">
+                </path>
+            </svg>
 
+            <span class="hidden lg:inline dark:hidden text-sm font-medium mr-2.5 tracking-wide">Light</span>
+            <span class="hidden lg:dark:inline text-sm font-medium mr-2.5 tracking-wide">Dark</span>
+        </button>
+    </div>
 
+    <!-- کانتینر اصلی صفحه -->
+    <div class="w-full max-w-xl flex flex-col gap-5 mt-16 sm:mt-0">
 
+        <!-- نوار بالا -->
+        <div
+            class="bg-white/80 dark:bg-[#161b26]/90 backdrop-blur-xl border border-amber-200/60 dark:border-amber-500/20 p-4 rounded-3xl shadow-xl shadow-amber-500/5 flex items-center justify-between gap-4 transition-colors duration-300">
 
+            <!-- دکمه ریست -->
+            <button
+                class="flex items-center gap-1.5 border border-amber-200/80 dark:border-amber-500/30 px-3.5 py-2 rounded-2xl text-xs font-medium hover:bg-amber-50 dark:hover:bg-amber-950/40 hover:text-amber-600 dark:hover:text-amber-300 transition-all text-slate-800 dark:text-slate-200 cursor-pointer shadow-sm">
+                <svg class="w-3.5 h-3.5 text-amber-500" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15">
+                    </path>
+                </svg>
+                Reset
+            </button>
+
+            <span class="hidden sm:inline text-xs text-slate-400 font-medium">Question 1 of 5</span>
+
+            <!-- نوار پیشرفت وسط -->
+            <div class="flex-1 flex items-center gap-3">
+                <span class="text-xs font-bold text-amber-600 dark:text-amber-400">1 / 5</span>
+                <div class="flex-1 bg-slate-200 dark:bg-slate-700 h-2.5 rounded-full overflow-hidden p-0.5 border border-amber-200/40 dark:border-amber-500/20"><div class="bg-gradient-to-r from-amber-400 to-yellow-500 h-full rounded-full transition-all duration-500 shadow-sm w-0"></div>
+                </div>
+            </div>
+
+            <!-- تایمر -->
+            <div
+                class="flex items-center gap-2 bg-amber-50/50 dark:bg-amber-950/30 border border-amber-200/60 dark:border-amber-500/20 px-3 py-2 rounded-2xl text-sm font-semibold shadow-inner text-amber-800 dark:text-amber-300">
+                <span id="timer">00:30</span>
+                <svg class="w-4 h-4 text-amber-500 animate-pulse" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+            </div>
+        </div>
+
+        <!-- کارت اصلی سوال و گزینه‌ها -->
+        <div
+            class="bg-white/90 dark:bg-[#161b26]/90 backdrop-blur-2xl border border-amber-200/70 dark:border-amber-500/25 p-6 rounded-[40px] shadow-2xl shadow-amber-950/10 text-center flex flex-col items-center transition-colors duration-300 relative overflow-hidden">
+
+            <!-- افکت دکوراتیو زرد رنگ پشت کارت -->
+            <div
+                class="absolute -top-24 -left-24 w-48 h-48 bg-amber-400/10 dark:bg-amber-500/5 rounded-full blur-3xl pointer-events-none">
+            </div>
+
+            <!-- آیکون علامت سوال -->
+            <div
+                class="w-16 h-16 bg-gradient-to-tr from-amber-100 to-yellow-50 dark:from-amber-950/80 dark:to-slate-800 text-amber-600 dark:text-amber-400 rounded-3xl flex items-center justify-center text-2xl font-black mb-6 shadow-md border border-amber-200/80 dark:border-amber-500/30 transform hover:scale-105 transition-transform duration-300">
+                ?
+            </div>
+
+            <!-- متن سوال -->
+            <h2 class="text-lg md:text-xl font-bold text-slate-800 dark:text-slate-100 mb-8 leading-relaxed">
+                کدام‌یک از گزینه‌های زیر یک تابع پیکانی (Arrow Function) صحیح در جاوااسکریپت است؟
+            </h2>
+
+            <!-- گزینه‌ها -->
+            <div class="w-full flex flex-col gap-3.5">
+
+                <!-- گزینه A -->
+                <div dir="rtl"
+                    class="option flex flex-row-reverse items-center justify-start gap-4 p-4 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 hover:border-amber-500 dark:hover:border-amber-400 hover:bg-amber-50/70 dark:hover:bg-amber-950/30 cursor-pointer transition-all duration-300 group shadow-sm hover:shadow-md hover:shadow-amber-500/10">
+                    <span
+                        class="w-9 h-9 rounded-xl bg-amber-50 dark:bg-slate-800 text-amber-600 dark:text-amber-400 flex items-center justify-center text-sm font-extrabold group-hover:bg-amber-500 group-hover:text-slate-950 transition-all shadow-inner shrink-0">A</span>
+                    <span dir="ltr" class="text-sm font-semibold text-slate-800 dark:text-slate-200 text-left">const add
+                        = (a, b) => a + b;</span>
+                </div>
+
+                <!-- گزینه B -->
+                <div dir="rtl"
+                    class="option flex flex-row-reverse items-center justify-start gap-4 p-4 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 hover:border-amber-500 dark:hover:border-amber-400 hover:bg-amber-50/70 dark:hover:bg-amber-950/30 cursor-pointer transition-all duration-300 group shadow-sm hover:shadow-md hover:shadow-amber-500/10">
+                    <span
+                        class="w-9 h-9 rounded-xl bg-amber-50 dark:bg-slate-800 text-amber-600 dark:text-amber-400 flex items-center justify-center text-sm font-extrabold group-hover:bg-amber-500 group-hover:text-slate-950 transition-all shadow-inner shrink-0">B</span>
+                    <span dir="ltr" class="text-sm font-semibold text-slate-800 dark:text-slate-200 text-left">function
+                        => add(a, b) { return a + b; }</span>
+                </div>
+
+                <!-- گزینه C --><div dir="rtl"
+                    class="option flex flex-row-reverse items-center justify-start gap-4 p-4 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 hover:border-amber-500 dark:hover:border-amber-400 hover:bg-amber-50/70 dark:hover:bg-amber-950/30 cursor-pointer transition-all duration-300 group shadow-sm hover:shadow-md hover:shadow-amber-500/10">
+                    <span
+                        class="w-9 h-9 rounded-xl bg-amber-50 dark:bg-slate-800 text-amber-600 dark:text-amber-400 flex items-center justify-center text-sm font-extrabold group-hover:bg-amber-500 group-hover:text-slate-950 transition-all shadow-inner shrink-0">C</span>
+                    <span dir="ltr" class="text-sm font-semibold text-slate-800 dark:text-slate-200 text-left">const add
+                        = function(a, b) => { return a + b; }</span>
+                </div>
+
+                <!-- گزینه D -->
+                <div dir="rtl"
+                    class="option flex flex-row-reverse items-center justify-start gap-4 p-4 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 hover:border-amber-500 dark:hover:border-amber-400 hover:bg-amber-50/70 dark:hover:bg-amber-950/30 cursor-pointer transition-all duration-300 group shadow-sm hover:shadow-md hover:shadow-amber-500/10">
+                    <span
+                        class="w-9 h-9 rounded-xl bg-amber-50 dark:bg-slate-800 text-amber-600 dark:text-amber-400 flex items-center justify-center text-sm font-extrabold group-hover:bg-amber-500 group-hover:text-slate-950 transition-all shadow-inner shrink-0">D</span>
+                    <span dir="ltr" class="text-sm font-semibold text-slate-800 dark:text-slate-200 text-left">arrow
+                        add(a, b) { return a + b; }</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- دکمه‌های ناوبری پایین -->
+        <div class="flex items-center justify-between">
+            <!-- دکمه Next در سمت راست -->
+            <button
+                class="bg-white/90 dark:bg-[#161b26]/90 backdrop-blur-md border border-amber-200/70 dark:border-amber-500/25 px-6 py-3.5 rounded-2xl text-sm font-semibold flex items-center gap-2 hover:bg-amber-50/90 dark:hover:bg-amber-950/40 hover:border-amber-400 dark:hover:border-amber-400 hover:text-amber-600 dark:hover:text-amber-300 transition-all duration-300 shadow-md shadow-amber-500/5 text-slate-800 dark:text-slate-100 group cursor-pointer">
+                <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform duration-300" fill="none"
+                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                </svg>
+                Next
+            </button>
+
+            <!-- دکمه Previous در سمت چپ -->
+            <button
+                class="bg-white/90 dark:bg-[#161b26]/90 backdrop-blur-md border border-amber-200/70 dark:border-amber-500/25 px-8 py-3.5 rounded-2xl text-sm font-semibold flex items-center gap-2 hover:bg-amber-50/90 dark:hover:bg-amber-950/40 hover:border-amber-400 dark:hover:border-amber-400 hover:text-amber-600 dark:hover:text-amber-300 transition-all duration-300 shadow-md shadow-amber-500/5 text-slate-800 dark:text-slate-100 group cursor-pointer">
+                Previous
+                <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none"
+                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+                </svg>
+            </button>
+        </div>
+
+    </div>
 
     <!-- ================== end zahra ================= -->
 
+    <!-- ==================== فوتر مدرن چهار نفره ==================== -->
+    <footer class="w-full max-w-5xl mt-20 mb-8 mx-auto px-4">
+        <div
+            class="bg-white/70 dark:bg-[#161b26]/80 backdrop-blur-2xl border border-amber-200/60 dark:border-amber-500/20 p-8 rounded-[36px] shadow-2xl shadow-amber-950/10">
 
+            <!-- هدر فوتر -->
+            <div class="text-center mb-8">
+                <span
+                    class="px-4 py-1.5 rounded-full bg-amber-100/80 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 text-xs font-bold tracking-wider uppercase border border-amber-200 dark:border-amber-500/30">Meet
+                    The Developers</span>
+                <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mt-3">تیم توسعه‌دهندگان این پروژه</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">با اعضای تیم ما از طریق شبکه‌های اجتماعی در
+                    ارتباط باشید</p>
+            </div>
 
+            <!-- کارت‌های 4 نفره (شبکه‌ای) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
+                <!-- شخص اول -->
+                <div
+                    class="flex flex-col items-center text-center p-5 rounded-3xl bg-white/80 dark:bg-slate-900/60 border border-amber-200/50 dark:border-slate-800 hover:border-amber-400 dark:hover:border-amber-500/50 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <img src="img/Screenshot_۲۰۲۶۰۷۰۵_۱۱۱۲۱۵_ChatGPT.jpg" alt="zahra khanezad" class="w-20 h-20 rounded-2xl object-cover mb-3.5 border-2 border-amber-400 shadow-md group-hover:scale-105 transition-transform duration-300">
+                    <h4 class="text-sm font-extrabold text-slate-800 dark:text-slate-100">zahra khanezad</h4>
+                    <span class="text-[11px] font-semibold text-amber-600 dark:text-amber-400 mt-0.5 mb-4">Front-End Dev</span>
+
+                    <!-- راه‌های ارتباطی -->
+                    <div class="flex items-center gap-2.5">
+                        <a href="https://github.com/zahraDiv" target="_blank" class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-amber-500 hover:text-white dark:hover:bg-amber-500 dark:hover:text-slate-950 hover:border-amber-500 transition-all shadow-sm" title="GitHub">
+                            <i class="fa-brands fa-github text-sm"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/zahrakh-dev" target="_blank" class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-amber-500 hover:text-white dark:hover:bg-amber-500 dark:hover:text-slate-950 hover:border-amber-500 transition-all shadow-sm" title="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in text-sm"></i>
+                        </a>
+                        <a href="https://www.instagram.com/zahrakh__dev/" target="_blank" class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-amber-500 hover:text-white dark:hover:bg-amber-500 dark:hover:text-slate-950 hover:border-amber-500 transition-all shadow-sm" title="Instagram">
+                            <i class="fa-brands fa-instagram text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- شخص دوم -->
+                <div
+                    class="flex flex-col items-center text-center p-5 rounded-3xl bg-white/80 dark:bg-slate-900/60 border border-amber-200/50 dark:border-slate-800 hover:border-amber-400 dark:hover:border-amber-500/50 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <img src="img/IMG_20260728_153829_891.jpg" alt="Shaliz Sharafi" class="w-20 h-20 rounded-2xl object-cover mb-3.5 border-2 border-amber-400 shadow-md group-hover:scale-105 transition-transform duration-300">
+                    <h4 class="text-sm font-extrabold text-slate-800 dark:text-slate-100">Shaliz Sharafi</h4>
+                    <span class="text-[11px] font-semibold text-amber-600 dark:text-amber-400 mt-0.5 mb-4">Front-End Dev</span>
+                    <div class="flex items-center gap-2.5">
+                        <a href="https://github.com/shalizsharafi" target="_blank" class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-amber-500 hover:text-white dark:hover:bg-amber-500 dark:hover:text-slate-950 hover:border-amber-500 transition-all shadow-sm" title="GitHub">
+                            <i class="fa-brands fa-github text-sm"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/shalizsharafi" target="_blank" class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-amber-500 hover:text-white dark:hover:bg-amber-500 dark:hover:text-slate-950 hover:border-amber-500 transition-all shadow-sm" title="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in text-sm"></i>
+                        </a>
+                        <a href="https://www.instagram.com/shalizcodes" target="_blank" class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-amber-500 hover:text-white dark:hover:bg-amber-500 dark:hover:text-slate-950 hover:border-amber-500 transition-all shadow-sm" title="Instagram">
+                            <i class="fa-brands fa-instagram text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- شخص سوم -->
+                <div
+                    class="flex flex-col items-center text-center p-5 rounded-3xl bg-white/80 dark:bg-slate-900/60 border border-amber-200/50 dark:border-slate-800 hover:border-amber-400 dark:hover:border-amber-500/50 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <img src="img/IMG_20260728_154055_974.jpg" alt="Niloufar Mohammadi" class="w-20 h-20 rounded-2xl object-cover mb-3.5 border-2 border-amber-400 shadow-md group-hover:scale-105 transition-transform duration-300">
+                    <h4 class="text-sm font-extrabold text-slate-800 dark:text-slate-100">Niloufar Mohammadi</h4>
+                    <span class="text-[11px] font-semibold text-amber-600 dark:text-amber-400 mt-0.5 mb-4">Front-End Dev</span>
+                    <div class="flex items-center gap-2.5">
+                        <a href="#" target="_blank" class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-amber-500 hover:text-white dark:hover:bg-amber-500 dark:hover:text-slate-950 hover:border-amber-500 transition-all shadow-sm" title="GitHub">
+                            <i class="fa-brands fa-github text-sm"></i>
+                        </a>
+                        <a href="#" target="_blank" class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-amber-500 hover:text-white dark:hover:bg-amber-500 dark:hover:text-slate-950 hover:border-amber-500 transition-all shadow-sm" title="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in text-sm"></i>
+                        </a>
+                        <a href="#" target="_blank" class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-amber-500 hover:text-white dark:hover:bg-amber-500 dark:hover:text-slate-950 hover:border-amber-500 transition-all shadow-sm" title="Instagram">
+                            <i class="fa-brands fa-instagram text-sm"></i>
+                        </a>
+                    </div>
+                </div><!-- شخص چهارم -->
+                <div
+                    class="flex flex-col items-center text-center p-5 rounded-3xl bg-white/80 dark:bg-slate-900/60 border border-amber-200/50 dark:border-slate-800 hover:border-amber-400 dark:hover:border-amber-500/50 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <img src="img/github_profile_under_1mb.jpg" alt="Pouria Rezaei" class="w-20 h-20 rounded-2xl object-cover mb-3.5 border-2 border-amber-400 shadow-md group-hover:scale-105 transition-transform duration-300">
+                    <h4 class="text-sm font-extrabold text-slate-800 dark:text-slate-100">Pouria Rezaei</h4>
+                    <span class="text-[11px] font-semibold text-amber-600 dark:text-amber-400 mt-0.5 mb-4">Front-End Dev</span>
+                    <div class="flex items-center gap-2.5">
+                        <a href="https://github.com/poria-dev" target="_blank" class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-amber-500 hover:text-white dark:hover:bg-amber-500 dark:hover:text-slate-950 hover:border-amber-500 transition-all shadow-sm" title="GitHub">
+                            <i class="fa-brands fa-github text-sm"></i>
+                        </a>
+                        <a href="https://www.linkedin.com" target="_blank" class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-amber-500 hover:text-white dark:hover:bg-amber-500 dark:hover:text-slate-950 hover:border-amber-500 transition-all shadow-sm" title="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in text-sm"></i>
+                        </a>
+                        <a href="https://www.instagram.com" target="_blank" class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-amber-500 hover:text-white dark:hover:bg-amber-500 dark:hover:text-slate-950 hover:border-amber-500 transition-all shadow-sm" title="Instagram">
+                            <i class="fa-brands fa-instagram text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- متن کپی‌رایت پایین فوتر -->
+            <div
+                class="text-center mt-8 pt-6 border-t border-amber-200/40 dark:border-slate-800 text-xs text-slate-400 dark:text-slate-500 font-medium">
+                ©️ 2026 All Rights Reserved - Designed with 💛
+            </div>
+
+        </div>
+    </footer>
+    <!-- =================================== end zahra footer===================== -->
 
 </body>
 <script src="js/app.js"></script>
