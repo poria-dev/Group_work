@@ -285,6 +285,8 @@ clearAnswerStyles()
         clearInterval(timerid)
         correctanswer.textContent = score
         resultmodal.classList.remove('scale-0')
+        win.play()
+        timesound.pause()
         switch(score){
             case 6:
                 level.textContent='فوق‌العاده! به مفاهیم این بخش کاملاً مسلط هستی. 🚀'
@@ -312,7 +314,7 @@ clearAnswerStyles()
 
         questionBox.setAttribute('inert', 'inert')
         setTimeout(() => {
-            alert("niloufar popup")
+            
             answerbox.forEach((val) => {
                 val.classList.add("pointer-events-none")
             })
