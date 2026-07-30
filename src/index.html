@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SmartQuiz</title>
+    <link rel="shortcut icon" href="./img/favicon-32x32.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="output.css">
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
@@ -63,16 +64,15 @@
             <span class="hidden sm:inline text-xs text-slate-400 font-medium">Question <span id="num">1</span> of 6</span>
 
             <!-- نوار پیشرفت وسط -->
-            <div dir="ltr" class="flex gap-2 ">
-            <span class="w-8 h-2 rounded-full bg-amber-400 progress"></span>
-            <span class="w-8 h-2 rounded-full bg-slate-300 progress"></span>
-            <span class="w-8 h-2 rounded-full bg-slate-300 progress"></span>
-            <span class="w-8 h-2 rounded-full bg-slate-300 progress"></span>
-            <span class="w-8 h-2 rounded-full bg-slate-300 progress"></span>
-            <span class="w-8 h-2 rounded-full bg-slate-300 progress"></span>
             
-            
-        </div>
+    <div dir="ltr" class="flex w-full max-w-[180px] sm:max-w-[220px] md:max-w-[260px] gap-1 sm:gap-2">
+        <span class="progress flex-1 h-2 rounded-full bg-amber-400 transition-all duration-300"></span>
+        <span class="progress flex-1 h-2 rounded-full bg-slate-300"></span>
+        <span class="progress flex-1 h-2 rounded-full bg-slate-300"></span>
+        <span class="progress flex-1 h-2 rounded-full bg-slate-300"></span>
+        <span class="progress flex-1 h-2 rounded-full bg-slate-300"></span>
+        <span class="progress flex-1 h-2 rounded-full bg-slate-300"></span>
+    </div>
 
             <!-- تایمر -->
             <div
