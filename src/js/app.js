@@ -12,8 +12,30 @@ let flag = 0
 let score = 0
 let ans0, ans1, ans2, ans3, ans4, ans5
 
+const timer=document.getElementById('timer')
+const boxtimer=document.querySelector('.box')
+const num =document.querySelector('#num')
+const progress=document.querySelectorAll('.progress')
+const reset = document.querySelector('.reset')
+const timemodal=document.getElementById('timeModal')
+const resbtn=document.getElementById('restartBtn')
+const timebtn=document.getElementById('retryBtn')
+const resultmodal=document.getElementById('resultModal')
+const scorenum=document.querySelector('.score')
+const correctanswer=document.querySelector('.correctt')
+const level =document.getElementById('levelDesc')
+const timesound= new Audio("./audio/Ten-TO-0-SECOND-TIMER.mp3")
+const over=new Audio("./audio/Game Over Sound Effects 3.mp3")
+const win=new Audio("./audio/win correct (1).mp3")
+timesound.volume = 0.3;
+
+let time=30
+let q=1
+let timerid
+
 
 // selects ---- 
+
 
 
 
@@ -39,6 +61,97 @@ themeBtn.addEventListener("click", () => {
 
 
 // start niloufar ============
+ function start(){
+    timerid=setInterval(()=>{
+        if(time > 0) {
+            time--
+            if(time == 0){
+                timemodal.classList.remove('scale-0')
+                scorenum.textContent=score
+                timesound.pause()
+                over.play()
+                 timesound.currentTime = 0;
+                 return
+
+            }
+            if(time <10){
+                timer.textContent='0'+ time
+                timesound.play()
+                 boxtimer.classList.add("danger-timer")
+                }else{
+                timer.textContent=time
+            }
+        }
+        
+    },1000)
+
+    
+ }
+window.addEventListener('load',()=>{
+    start()
+})
+timebtn.addEventListener('click',()=>{
+    res()
+    timemodal.classList.add('scale-0')
+    
+})
+
+reset.addEventListener('click',res)
+
+ function res(){
+    flag=0
+    time=30
+    q=1
+    score=0
+    timer.textContent='30'
+    num.textContent='1'
+    next.innerHTML=`<svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform duration-300" fill="none"
+                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                </svg>
+                Next`
+    boxtimer.classList.remove("danger-timer")
+    progress.forEach((item , index)=>{
+        if(index == 0){
+            item.backgroundColor='#ffb900'
+        }else{
+            item.style.backgroundColor='#cad5e2'
+        }
+        
+    })
+
+    clearAnswerStyles()
+    ans0 = null
+    ans1 = null
+    ans2 = null
+    ans3 = null
+    ans4 = null
+    ans5 = null
+    questionBox.removeAttribute('inert')
+
+      answerbox.forEach((val)=>{
+        val.classList.remove("pointer-events-none")
+    })
+
+    question.innerHTML = "کدام‌یک از گزینه‌های زیر یک تابع پیکانی (Arrow Function) صحیح در جاوااسکریپت است؟"
+        spans[0].innerHTML = "const add = (a, b) => a + b;"
+        spans[1].innerHTML = "function => add(a, b) { return a + b; }"
+        spans[2].innerHTML = "const add = function(a, b) => { return a + b; }"
+        spans[3].innerHTML = "arrow add(a, b) { return a + b; }"
+
+        back.setAttribute("disabled", "disabled")
+        back.style.background = "gray"
+ }
+
+
+
+resbtn.addEventListener('click',()=>{
+    res()
+    resultmodal.classList.add('scale-0')
+    start()
+})
+
+
 
 
 
@@ -128,6 +241,14 @@ answerbox.forEach((val) => {
 
 // دکمه جلو -----------------------------
 next.addEventListener("click", () => {
+
+clearAnswerStyles()
+    if(q < progress.length){
+        q++
+        progress[q-1].style.backgroundColor='#ffb900'
+    }
+    num.textContent=q
+
     clearAnswerStyles()
 
 
@@ -136,6 +257,7 @@ next.addEventListener("click", () => {
         item.classList.remove("pointer-events-none")
 
     })
+
 
     if (flag < 5) {
         flag++
@@ -159,12 +281,44 @@ next.addEventListener("click", () => {
 
     // ----------------------
     if (finish) {
+        questionBox.setAttribute('inert','inert')
+        clearInterval(timerid)
+        correctanswer.textContent = score
+        resultmodal.classList.remove('scale-0')
+        win.play()
+        timesound.pause()
+        switch(score){
+            case 6:
+                level.textContent='فوق‌العاده! به مفاهیم این بخش کاملاً مسلط هستی. 🚀'
+                break;
+            case 5:
+            case 4:
+                level.textContent= 'عملکرد خیلی خوبی داشتی. فقط چند نکته کوچک برای مرور باقی مانده است.'
+            break;
+            
+            case 3:
+            case 2:
+                level.textContent='خوب بود، اما نیاز به تمرین بیشتری داری 💪'
+            break;
+
+            case 1:
+            case 0:
+        level.textContent='نیاز به یادگیری و تمرین بیشتر داری 📚'
+        }
+        setTimeout(() => {
+            
+        answerbox.forEach((val) => {
+            val.classList.add("pointer-events-none")
+        })
+    })
+
         questionBox.setAttribute('inert', 'inert')
         setTimeout(() => {
-            alert("niloufar popup")
+            
             answerbox.forEach((val) => {
                 val.classList.add("pointer-events-none")
             })
+
         }, 1000);
 
         //   🔴 niloufar popup -----------------
@@ -176,7 +330,7 @@ next.addEventListener("click", () => {
 
 
 
-
+    
 
 })
 
@@ -191,12 +345,18 @@ next.addEventListener("click", () => {
 // دکمه قبلی ----------------------------
 back.addEventListener("click", () => {
     savingPreviousAnswers()
+
+    q--
+    progress[flag].style.backgroundColor='#cad5e2'
+    num.textContent=q
+
     next.classList.remove("pointer-events-none")
     answerbox.forEach((item) => {
 
         item.classList.add("pointer-events-none")
 
     })
+
 
     back.removeAttribute("disabled")
     back.style.background = "#161b26"
@@ -351,6 +511,7 @@ function checkAnswer() {
 function correctAnswer(item) {
     item.classList.add('correct')
     score++
+
 }
 
 function clearAnswerStyles() {
@@ -416,7 +577,7 @@ function savingPreviousAnswers() {
     }
 }
 //shaliz//
-
+console.log(score);
 
 
 // -----------------------------------------------------------------------------
