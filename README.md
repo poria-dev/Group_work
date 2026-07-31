@@ -4,6 +4,7 @@
 
 ### 👥 First Team Project • 4 Developers
 
+
 <p>
 A modern, responsive and interactive Quiz Application built with
 <strong>HTML</strong>, <strong>Tailwind CSS</strong> and
